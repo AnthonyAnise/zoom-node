@@ -258,6 +258,25 @@ class Meetings {
     });
   }
 
+/**
+   * Updates an existing meeting.
+   *
+   * @see https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/meetingUpdate
+   *
+   * @param {number} meetingId
+   * @param {Object} meeting
+   *
+   * @returns {Promise}
+   */
+  updateMeeting(meetingId, meeting) {
+    return this.client.withTokenRefreshAttempt({
+      method: "PATCH",
+      url: `/meetings/${meetingId}`,
+      data: meeting,
+    });
+  }
+
+  
   /**
    * Delete a meeting.
    *
