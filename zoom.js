@@ -439,7 +439,7 @@ class Zoom {
   // `groupMembers` above.
   withTokenRefreshAttempt = (conf) => {
     return this.makeAPIRequest(conf).catch((err) => {
-      if (err.response.status === 401) {
+      if (err.response?.status === 401) {
         // Try once to reset token function so that a fresh request will
         // be made (and cached) for a new access token.
         //
