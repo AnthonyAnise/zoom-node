@@ -294,6 +294,23 @@ class Meetings {
       params,
     });
   }
+
+   /**
+   * Retrieve the meeting transcript for a specific meeting.
+   *
+   * @see https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/GetMeetingTranscript
+   *
+   * @param {number} meetingId
+   *
+   * @returns {Promise}
+   */
+  getMeetingRecordings(meetingId) {
+    return this.client.withTokenRefreshAttempt({
+      method: "GET",
+      url: `/meetings/${meetingId}/transcript`,
+    });
+  }
+
 }
 
 /**
