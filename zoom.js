@@ -304,12 +304,18 @@ class Meetings {
    *
    * @returns {Promise}
    */
-  getMeetingRecordings(meetingId) {
-    return this.client.withTokenRefreshAttempt({
+  async getMeetingTranscript(meetingId) {
+    let transcript = await this.client.withTokenRefreshAttempt({
       method: "GET",
       url: `/meetings/${meetingId}/transcript`,
     });
+    if (transcript.download_url) {
+      return await this.client.withTokenRefreshAttempt({
+      method: "GET",
+      url: transcript.download_url,
+    });
   }
+    return null;
 
 }
 
