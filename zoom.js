@@ -316,7 +316,7 @@ class Meetings {
     });
   }
     return null;
-
+  }
 }
 
 /**
